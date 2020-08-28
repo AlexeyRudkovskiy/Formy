@@ -1,0 +1,44 @@
+{
+    "name": "alexe/formy",
+    "description": "Laravel form builder inspired by Symfony forms",
+    "license": "MIT",
+    "type": "library",
+    "version": "1.0",
+    "authors": [
+        {
+            "name": "AlexeyRudkovskiy",
+            "email": "alex.rudkowskij@yandex.ru",
+            "homepage": "https://github.com/AlexeyRudkovskiy"
+        }
+    ],
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.2.5",
+        "illuminate/support": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.3",
+        "orchestra/testbench": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Formy\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Formy\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+              "Formy\\Providers\\FormyServiceProvider"
+            ]
+        }
+    }
+}
