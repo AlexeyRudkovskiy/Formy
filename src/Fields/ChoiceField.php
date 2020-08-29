@@ -94,13 +94,23 @@ class ChoiceField extends AbstractField implements SometimesHandleAfterSave
             $value = call_user_func([ $this->relatedModel, 'find' ], $value);
         }
 
+        $this->value = $value;
+
         if ($this->shouldHandleAfterSave()) {
             if ($this->useSyncToSave) {
                 $target->{$fieldName}()->sync($value);
             } else {
                 if (!$this->isMultiple) {
                     if ($target instanceof Model) {
-                        $target->{$fieldName}()->save($value);
+                        $relationshipObject = $target->{$fieldName}();
+                        if (method_exists($relationshipObject, 'save')) {
+                            $relationshipObject->save($value);
+                            $value->save();
+                        } else if (method_exists($relationshipObject, 'associate')) {
+                            $relationshipObject->associate($value);
+                        } else {
+                            /// todo: throw an exception
+                        }
                     } else if (is_array($target)) {
                         $target[$fieldName] = $value;
                     }
@@ -310,7 +320,11 @@ class ChoiceField extends AbstractField implements SometimesHandleAfterSave
 
     public function shouldHandleAfterSave(): bool
     {
-        return $this->relatedModel !== null && $this->getValue() instanceof Model;
+        $value = $this->getValue();
+        return $this->relatedModel !== null && (
+            $value instanceof Model
+            || $value instanceof \Illuminate\Database\Eloquent\Collection
+        );
     }
 
 }
