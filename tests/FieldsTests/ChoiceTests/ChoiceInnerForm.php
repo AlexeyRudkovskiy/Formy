@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Formy\Tests\Forms;
+namespace Formy\Tests\FieldsTests\ChoiceTests;
 
 
 use Formy\Contracts\AbstractForm;
@@ -9,7 +9,7 @@ use Formy\Contracts\FormBuilderContract;
 use Formy\Contracts\HandleAfterSave;
 use Formy\Fields\TextField;
 
-class UnicornTailForm extends AbstractForm implements HandleAfterSave
+class ChoiceInnerForm extends AbstractForm implements HandleAfterSave
 {
 
     public function buildForm(FormBuilderContract $builder): FormBuilderContract

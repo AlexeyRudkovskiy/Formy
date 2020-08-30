@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Formy\Tests\Forms;
+namespace Formy\Tests\FieldsTests\ChoiceTests;
 
 
 use Formy\Contracts\AbstractForm;
@@ -11,7 +11,7 @@ use Formy\Fields\ChoiceField;
 use Formy\Fields\TextField;
 use Formy\Tests\Database\Models\UnicornTail;
 
-class UnicornHeadWithChoiceForm extends AbstractForm implements SaveOnHandle
+class ChoiceEntryForm extends AbstractForm implements SaveOnHandle
 {
 
     protected $isMultiple = false;

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Formy\Tests\FieldsTests;
+namespace Formy\Tests\FieldsTests\InputTests;
 
 
 use Formy\Contracts\FormContract;
