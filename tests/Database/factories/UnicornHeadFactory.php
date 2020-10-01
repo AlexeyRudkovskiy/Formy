@@ -1,10 +1,18 @@
 <?php
 
-use Faker\Generator as Faker;
-use Formy\Tests\Database\Models\UnicornHead;
+namespace Formy\Tests\Database\factories;
 
-$factory->define(UnicornHead::class, function (Faker $faker) {
-    return [
-        'title'     => $faker->text(25),
-    ];
-});
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+
+
+class UnicornHeadFactory extends Factory {
+
+    public function definition()
+    {
+        return [
+            'title' => $this->faker->text(25)
+        ];
+    }
+
+}
