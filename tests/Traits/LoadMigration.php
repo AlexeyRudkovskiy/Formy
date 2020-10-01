@@ -4,8 +4,6 @@
 namespace Formy\Tests\Traits;
 
 
-use Formy\Tests\Database\Migrations\CreateUnicornsHeadTable;
-
 trait LoadMigration
 {
 
