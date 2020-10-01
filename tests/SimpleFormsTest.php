@@ -6,8 +6,8 @@ namespace Formy\Tests;
 
 use Formy\Providers\FormyServiceProvider;
 use Formy\Tests\Classes\SimpleObject;
-use Formy\Tests\Database\Migrations\CreateUnicornsHeadTable;
-use Formy\Tests\Database\Migrations\CreateUnicornsTailTable;
+use Formy\Tests\Database\migrations\CreateUnicornsHeadTable;
+use Formy\Tests\Database\migrations\CreateUnicornsTailTable;
 use Formy\Tests\Forms\EntryFormWithSaveOnHandle;
 use Formy\Tests\Traits\LoadMigration;
 use Illuminate\Foundation\Testing\RefreshDatabase;

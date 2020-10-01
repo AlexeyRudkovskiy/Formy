@@ -19,7 +19,7 @@ trait LoadMigration
         $className = array_pop($classParts);
 
         if (!in_array($fullClassName, $this->declaredClasses)) {
-            include_once __DIR__ . '/../Database/Migrations/' . $className . '.php';
+            include_once __DIR__ . '/../Database/migrations/' . $className . '.php';
         }
     }
 

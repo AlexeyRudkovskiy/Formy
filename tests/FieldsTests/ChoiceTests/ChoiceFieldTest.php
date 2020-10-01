@@ -5,8 +5,8 @@ namespace Formy\Tests\FieldsTests\ChoiceTests;
 
 
 use Formy\Providers\FormyServiceProvider;
-use Formy\Tests\Database\Migrations\CreateUnicornsHeadTable;
-use Formy\Tests\Database\Migrations\CreateUnicornsTailTable;
+use Formy\Tests\Database\migrations\CreateUnicornsHeadTable;
+use Formy\Tests\Database\migrations\CreateUnicornsTailTable;
 use Formy\Tests\Database\Models\UnicornHead;
 use Formy\Tests\Database\Models\UnicornTail;
 use Formy\Tests\Traits\LoadMigration;
