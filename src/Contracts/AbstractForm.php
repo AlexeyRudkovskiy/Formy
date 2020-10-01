@@ -105,15 +105,7 @@ abstract class AbstractForm implements FormContract
                 continue ;
             }
 
-            if ($field instanceof FormContract) {
-                if (is_array($this->target)) {
-                    $this->target[$field->getId()] = $updatedValue;
-                } else {
-                    $this->target->{$field->getId()} = $updatedValue;
-                }
-            } else {
-                $this->target = $updatedValue;
-            }
+            $this->updateFieldValue($field, $updatedValue);
         }
 
         if ($this instanceof SaveOnHandle && $this->target instanceof Model) {
@@ -122,19 +114,13 @@ abstract class AbstractForm implements FormContract
             foreach ($fields as $field) {
                 $updatedValue = $field->handle($request, $this->target);
                 if (!($field instanceof HandleAfterSave ||
+                    $field instanceof IgnoreOnHandle ||
                     ($field instanceof SometimesHandleAfterSave && $field->shouldHandleAfterSave())
                 )) {
                     continue ;
                 }
-                if ($field instanceof FormContract) {
-                    if (is_array($this->target)) {
-                        $this->target[$field->getId()] = $updatedValue;
-                    } else {
-                        $this->target->{$field->getId()} = $updatedValue;
-                    }
-                } else {
-                    $this->target = $updatedValue;
-                }
+
+                $this->updateFieldValue($field, $updatedValue);
             }
         }
 
@@ -223,6 +209,23 @@ abstract class AbstractForm implements FormContract
                 $target->{$fieldName} : $target[$fieldName] ?? '';
         } catch (\Exception $e) {
             dd($e, $target);
+        }
+    }
+
+    /**
+     * @param FieldContract $field
+     * @param mixed $updatedValue
+     */
+    protected function updateFieldValue(FieldContract $field, $updatedValue): void
+    {
+        if ($field instanceof FormContract) {
+            if (is_array($this->target)) {
+                $this->target[$field->getId()] = $updatedValue;
+            } else {
+                $this->target->{$field->getId()} = $updatedValue;
+            }
+        } else {
+            $this->target = $updatedValue;
         }
     }
 

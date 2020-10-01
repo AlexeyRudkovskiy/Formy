@@ -1,10 +1,12 @@
 <?php
 
+namespace Formy\Tests\Database\migrations;
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostsTable extends Migration
+class CreateUnicornsHeadTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +15,9 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('unicorns_head', function (Blueprint $table) {
             $table->id();
-
             $table->string('title');
-
             $table->timestamps();
         });
     }
@@ -29,7 +29,7 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('unicorn_head');
     }
 }
 
